@@ -5,6 +5,7 @@ import StrategyCard from "./components/StrategyCard";
 import ServicesCard from "./components/ServicesCard";
 import PartnersCard from "./components/PartnersCard";
 import TestimonialCard from "./components/TestimonialsCard";
+import FAQSection from "./components/FAQsection";
 
 function StrategiesSection() {
 	const strategyCards = [
@@ -153,20 +154,6 @@ function TestimonialssCard() {
 		},
 		{
 			id: 2,
-			name: "Client’s Name",
-			comment: "Client role/job description or post",
-			description:
-				"Partnering with Apex CFO Advisory has transformed our approach to financial management! Their experts are exceptionally attentive and consistently go above and beyond to address our requirements. Since adopting their strategies, we've experienced a remarkable boost in our operational efficiency. I wholeheartedly recommend their services!",
-		},
-		{
-			id: 3,
-			name: "Client’s Name",
-			comment: "Client role/job description or post",
-			description:
-				"Partnering with Apex CFO Advisory has transformed our approach to financial management! Their experts are exceptionally attentive and consistently go above and beyond to address our requirements. Since adopting their strategies, we've experienced a remarkable boost in our operational efficiency. I wholeheartedly recommend their services!",
-		},
-		{
-			id: 4,
 			name: "Client’s Name",
 			comment: "Client role/job description or post",
 			description:
@@ -436,7 +423,7 @@ export default function Home() {
 					</div>
 				</div>
 			</div>
-			<div className='w-full place-content-center items-center align-center   xl:px-25 md:px-15 lg:px-35 xm:px-10 mb-7'>
+			<div className='w-full place-content-center items-center align-center   xl:px-25 md:px-15 lg:px-35 xm:px-10 mb-26'>
 				<div className='flex flex-col gap-y-2.5 items-center'>
 					<Image
 						src='/testimonials_icon.svg'
@@ -452,6 +439,72 @@ export default function Home() {
 					<div className='flex p-4 rounded-2xl  '>
 						<TestimonialssCard />
 					</div>
+				</div>
+			</div>
+			<div className='w-full place-content-center items-center align-center   xl:px-25 md:px-15 lg:px-35 xm:px-10 mb-7'>
+				<div className='flex flex-col gap-y-2.5 items-center'>
+					<Image
+						src='/needed_answers_icon.svg'
+						height={20}
+						width={30}
+						alt='testimonials_icon'
+						className='lg:w-35 md:w-30 xl:w-33'
+					/>
+
+					<p className='font-semibold text-6xl md:text-4xl mb-2  '>
+						Frequently Asked Questions
+					</p>
+					<p className='   items-center  place-content-center text-center  text-[#5c5c5c] text-sm font-normal text-wrap'>
+						Find answers to frequently asked question
+					</p>
+				</div>
+				<div>
+					<FAQSection />
+				</div>
+			</div>
+			<div className='bg-[#02182A] flex flex-row text-white flex-wrap px-25 lg:px-5 sm:px-3 place-content-between'>
+				<div className='flex flex-col py-25  xl:w-[600px] lg:w-[500px] sm:w-[340px]  '>
+					<p className='text-4xl font-bold leading-snug mb-3'>
+						Take Control of Your Finances Today
+					</p>
+					<p className='mb-9'>
+						Book a free strategy session with one of our expert CFOs and start
+						making better financial decisions
+					</p>
+					<CustomBlueButton className='xl:w-[350px] lg:w-[320px] sm:w-[300px]'>
+						Get started
+					</CustomBlueButton>
+				</div>
+				<div className='py-6 sm:py-20 flex flex-col space-y-5'>
+					<div className='flex gap-5'>
+						<Image
+							src='/small_rectangle.svg'
+							width={140}
+							height={150}
+							className=' sm:w-30'
+						/>
+						<Image
+							src='/mid_rectangle.svg'
+							width={300}
+							height={150}
+							className=' sm:w-65'
+						/>
+					</div>
+					<Image
+						src='/big_rectangle.svg'
+						width={460}
+						height={225}
+						className='sm:w-100'
+					/>
+				</div>
+			</div>
+			<div className=' py-20 px-10'>
+				<div>
+					<Image src="/logo_placeholder.svg"
+					width={1000}
+					height={120}
+					alt="logo"
+					className="w-full"/>
 				</div>
 			</div>
 		</main>
