@@ -3,6 +3,8 @@ import React from "react";
 import { CustomBlueButton } from "@/components/ui/CustomBlueButton";
 import StrategyCard from "./components/StrategyCard";
 import ServicesCard from "./components/ServicesCard";
+import PartnersCard from "./components/PartnersCard";
+import TestimonialCard from "./components/TestimonialsCard";
 
 function StrategiesSection() {
 	const strategyCards = [
@@ -88,6 +90,97 @@ function ServicessCard() {
 					key={card.id}
 					imageSrc={card.imageSrc}
 					title={card.title}
+					description={card.description}
+				/>
+			))}
+		</div>
+	);
+}
+
+function PartnerssCard() {
+	const partnerCards = [
+		{
+			id: 1,
+			imageSrc: "/blank_white_frame.svg",
+			title: "Finance dashboard",
+			description:
+				" Get an overview of cash flow, expenses, and financial trends at a glance.",
+		},
+		{
+			id: 2,
+			imageSrc: "/blank_white_frame.svg",
+			title: "Real time communication",
+			description:
+				"Connect with CFO advisors through built-in messaging and consultation scheduling.",
+		},
+		{
+			id: 3,
+			imageSrc: "/blank_white_frame.svg",
+			title: " Secure Document Sharing",
+			description:
+				"Upload and manage financial reports, contracts, and key business documents in one place.",
+		},
+		{
+			id: 4,
+			imageSrc: "/blank_white_frame.svg",
+			title: "Data Security & Confidentiality",
+			description:
+				"Enterprise-grade security ensures your financial data remains private and protected. ",
+		},
+	];
+
+	return (
+		<div className='flex justify-center flex-wrap gap-6'>
+			{partnerCards.map((card) => (
+				<PartnersCard
+					key={card.id}
+					imageSrc={card.imageSrc}
+					title={card.title}
+					description={card.description}
+				/>
+			))}
+		</div>
+	);
+}
+function TestimonialssCard() {
+	const testimonyCards = [
+		{
+			id: 1,
+			name: "Client’s Name",
+			comment: "Client role/job description or post",
+			description:
+				"Partnering with Apex CFO Advisory has transformed our approach to financial management! Their experts are exceptionally attentive and consistently go above and beyond to address our requirements. Since adopting their strategies, we've experienced a remarkable boost in our operational efficiency. I wholeheartedly recommend their services!",
+		},
+		{
+			id: 2,
+			name: "Client’s Name",
+			comment: "Client role/job description or post",
+			description:
+				"Partnering with Apex CFO Advisory has transformed our approach to financial management! Their experts are exceptionally attentive and consistently go above and beyond to address our requirements. Since adopting their strategies, we've experienced a remarkable boost in our operational efficiency. I wholeheartedly recommend their services!",
+		},
+		{
+			id: 3,
+			name: "Client’s Name",
+			comment: "Client role/job description or post",
+			description:
+				"Partnering with Apex CFO Advisory has transformed our approach to financial management! Their experts are exceptionally attentive and consistently go above and beyond to address our requirements. Since adopting their strategies, we've experienced a remarkable boost in our operational efficiency. I wholeheartedly recommend their services!",
+		},
+		{
+			id: 4,
+			name: "Client’s Name",
+			comment: "Client role/job description or post",
+			description:
+				"Partnering with Apex CFO Advisory has transformed our approach to financial management! Their experts are exceptionally attentive and consistently go above and beyond to address our requirements. Since adopting their strategies, we've experienced a remarkable boost in our operational efficiency. I wholeheartedly recommend their services!",
+		},
+	];
+
+	return (
+		<div className='flex justify-center overflow-y-auto  '>
+			{testimonyCards.map((card) => (
+				<TestimonialCard
+					key={card.id}
+					name={card.name}
+					comment={card.comment}
 					description={card.description}
 				/>
 			))}
@@ -233,7 +326,7 @@ export default function Home() {
 			<div className='mb-30'>
 				<StrategiesSection />
 			</div>
-			<div className=" xl:p-10 ">
+			<div className=' xl:p-10 mb-10'>
 				<div className='p-10 flex bg-[#FAFAFA] rounded  '>
 					<div className='flex flex-col mr-16'>
 						<div className='flex flex-col max-w-[300px] space-y-2'>
@@ -266,6 +359,98 @@ export default function Home() {
 					</div>
 					<div className='flex flex-wrap'>
 						<ServicessCard />
+					</div>
+				</div>
+			</div>
+			<div className='flex flex-col w-full place-content-center items-center align-center h-full  xl:px-65 md:px-15 lg:px-35 xm:px-10 mb-7'>
+				<div className='flex flex-col gap-y-2.5 items-center mb-10'>
+					<div className='flex flex-col   items-center '>
+						<Image
+							src='/our_product.svg'
+							height={39}
+							width={150}
+							alt='why choose us'
+							className='lg:w-35 md:w-30'
+						/>
+					</div>
+					<p className='font-semibold text-6xl md:text-4xl mb-2 xl:text-wrap'>
+						A Smarter Way to Manage Your Finances
+					</p>
+					<p className='flex flex-col   items-center  place-content-center text-center  text-[#5c5c5c] text-sm font-normal text-wrap'>
+						Our in-house application offers a real-time financial dashboard and
+						a seamless platform for collaboration between clients and financial
+						experts, ensuring informed and strategic business decisions.
+					</p>
+				</div>
+			</div>
+			<div className='flex flex-col flex-wrap items-center justify-center gap-y-2 '>
+				<Image
+					src='/blank_rectangle.svg'
+					width={1600}
+					height={450}
+					alt='blank image'
+					className='xl:px-25 rounded-4xl lg:px-15 sm:px-10'></Image>
+				<button className='cursor-pointer'>
+					<Image
+						src='/live_demo.svg'
+						width={150}
+						height={30}
+						alt='play button'
+					/>
+				</button>
+			</div>
+			<div className=' xl:p-10 mb-10'>
+				<div className='p-10 flex bg-[#FAFAFA] rounded  '>
+					<div className='flex flex-col mr-16'>
+						<div className='flex flex-col max-w-[300px] space-y-2'>
+							<Image
+								src='/discover_icon.svg'
+								width={70}
+								height={40}
+								alt='our services'
+								className='xl:w-35 sm:w-30 lg:w-30'
+							/>
+							<p className='font-semibold text-3xl'>Your finance partner</p>
+							<p className='text-sm font-normal text-wrap text-[#5c5c5c] xl:mb-50 lg:mb-33 sm:mb-10'>
+								Our web application provides tailored financial strategies
+								designed to enhance your business performance. It addresses your
+								specific challenges through expert insights and collaborative
+								tools, ensuring you have the support you need to succeed.
+							</p>
+
+							<div className='flex  w-full  '>
+								<CustomBlueButton>
+									See all Services
+									<Image
+										src='/arrow_icon.svg'
+										width={30}
+										height={30}
+										alt='right arrow'
+									/>
+								</CustomBlueButton>
+							</div>
+						</div>
+					</div>
+					<div className='flex flex-wrap'>
+						<PartnerssCard />
+					</div>
+				</div>
+			</div>
+			<div className='w-full place-content-center items-center align-center   xl:px-25 md:px-15 lg:px-35 xm:px-10 mb-7'>
+				<div className='flex flex-col gap-y-2.5 items-center'>
+					<Image
+						src='/testimonials_icon.svg'
+						height={39}
+						width={150}
+						alt='testimonials_icon'
+						className='lg:w-35 md:w-30 xl:w-40'
+					/>
+
+					<p className='font-semibold text-6xl md:text-4xl mb-2  '>
+						Hear what our clients say about us
+					</p>
+					<div className='flex p-4 rounded-2xl  '>
+						<TestimonialssCard />
 					</div>
 				</div>
 			</div>
