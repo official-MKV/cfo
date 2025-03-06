@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { Separator } from "@/components/ui/separator";
 
 const Footer = () => {
 	return (
@@ -18,8 +19,22 @@ const Footer = () => {
 						<p>Email</p>
 					</div>
 				</div>
-				<div className='flex flex-row '></div>
+				<div className='flex flex-row gap-4 '>
+					<Link href='/' className='mr-2 text-[#4576D4]'>
+						CFO advisory
+					</Link>
+					<Link href='/services'>Services</Link>
+					<Link href='/aboutus'>About Us</Link>
+					<Link href='/product'>Product</Link>
+					<Link href='/career'>Career</Link>
+				</div>
 			</div>
+			<Separator />
+			<div className='flex flex-row justify-between px-24 py-8'>
+                <p>© All Right Reserved</p>
+                <p>2024 Terms and Conditions</p>
+
+            </div>
 		</footer>
 	);
 };

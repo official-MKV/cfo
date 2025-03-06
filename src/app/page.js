@@ -40,7 +40,7 @@ function StrategiesSection() {
 	];
 
 	return (
-		<div className='flex justify-center flex-wrap '>
+		<div className='flex justify-center flex-wrap lg:gap-8 '>
 			{strategyCards.map((card) => (
 				<StrategyCard
 					key={card.id}
@@ -159,10 +159,18 @@ function TestimonialssCard() {
 			description:
 				"Partnering with Apex CFO Advisory has transformed our approach to financial management! Their experts are exceptionally attentive and consistently go above and beyond to address our requirements. Since adopting their strategies, we've experienced a remarkable boost in our operational efficiency. I wholeheartedly recommend their services!",
 		},
+		{
+			id: 1,
+			name: "Client’s Name",
+			comment: "Client role/job description or post",
+			description:
+				"Partnering with Apex CFO Advisory has transformed our approach to financial management! Their experts are exceptionally attentive and consistently go above and beyond to address our requirements. Since adopting their strategies, we've experienced a remarkable boost in our operational efficiency. I wholeheartedly recommend their services!",
+		},
+		
 	];
 
 	return (
-		<div className='flex justify-center overflow-y-auto  '>
+		<div className='flex  overflow-y-auto  '>
 			{testimonyCards.map((card) => (
 				<TestimonialCard
 					key={card.id}
@@ -310,7 +318,7 @@ export default function Home() {
 					</p>
 				</div>
 			</div>
-			<div className='mb-30'>
+			<div className='mb-30 '>
 				<StrategiesSection />
 			</div>
 			<div className=' xl:p-10 mb-10'>
@@ -423,7 +431,7 @@ export default function Home() {
 					</div>
 				</div>
 			</div>
-			<div className='w-full place-content-center items-center align-center   xl:px-25 md:px-15 lg:px-35 xm:px-10 mb-26'>
+			<div className='w-full place-content-center items-center align-center   xl:px-25 md:px-15 lg:px-15 xm:px-10 mb-26'>
 				<div className='flex flex-col gap-y-2.5 items-center'>
 					<Image
 						src='/testimonials_icon.svg'
@@ -436,7 +444,7 @@ export default function Home() {
 					<p className='font-semibold text-6xl md:text-4xl mb-2  '>
 						Hear what our clients say about us
 					</p>
-					<div className='flex p-4 rounded-2xl  '>
+					<div className='flex rounded-2xl w-full  '>
 						<TestimonialssCard />
 					</div>
 				</div>
@@ -500,11 +508,13 @@ export default function Home() {
 			</div>
 			<div className=' py-20 px-10'>
 				<div>
-					<Image src="/logo_placeholder.svg"
-					width={1000}
-					height={120}
-					alt="logo"
-					className="w-full"/>
+					<Image
+						src='/logo_placeholder.svg'
+						width={1000}
+						height={120}
+						alt='logo'
+						className='w-full'
+					/>
 				</div>
 			</div>
 		</main>

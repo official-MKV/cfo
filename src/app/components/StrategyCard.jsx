@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function StrategyCard({ imageSrc, title, description }) {
   return (
-    <div className='flex flex-col w-full max-w-[300px] gap-y-2 mx-3'>
+    <div className='flex flex-col w-full max-w-[300px] gap-y-3 mx-3  '>
       <div>
         <Image
           src={imageSrc}
