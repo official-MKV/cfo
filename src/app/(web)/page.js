@@ -5,7 +5,6 @@ import StrategyCard from "@/components/web/StrategyCard";
 import ServicesCard from "@/components/web/ServicesCard";
 import PartnersCard from "@/components/web/PartnersCard";
 import TestimonialCard from "@/components/web/TestimonialsCard";
-
 import FAQSection from "@/components/web/FAQsection";
 
 function StrategiesSection() {

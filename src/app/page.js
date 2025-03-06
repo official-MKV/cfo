@@ -1,11 +1,11 @@
 import Image from "next/image";
 import React from "react";
 import { CustomBlueButton } from "@/components/ui/CustomBlueButton";
-import StrategyCard from "./components/StrategyCard";
-import ServicesCard from "./components/ServicesCard";
-import PartnersCard from "./components/PartnersCard";
-import TestimonialCard from "./components/TestimonialsCard";
-import FAQSection from "./components/FAQsection";
+import StrategyCard from "@/components/web/StrategyCard";
+import ServicesCard from "@/components/web/ServicesCard";
+import PartnersCard from "@/components/web/PartnersCard";
+import TestimonialCard from "@/components/web/TestimonialsCard";
+import FAQSection from "@/components/web/FAQsection";
 
 function StrategiesSection() {
 	const strategyCards = [
