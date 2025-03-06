@@ -7,7 +7,7 @@ import { projects } from "@/data";
 
 const page = () => {
   return (
-    <div className="flex flex-col w-full h-full overflow-scroll">
+    <div className="flex flex-col w-full h-full overfl">
       <div className="w-full justify-end flex gap-2">
         <Button className="text-primary" variant="ghost">
           <Plus />
