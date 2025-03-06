@@ -10,20 +10,28 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(222, 47%, 11%);
+
+  /* Primary colors */
+  --primary: hsl(223, 100%, 54%); /* The blue used in buttons and main banner */
+  --primary-foreground: hsl(0, 0%, 100%);
+
+  /* Secondary colors */
+  --secondary: hsl(220, 14%, 96%);
+  --secondary-foreground: hsl(222, 47%, 11%);
+
+  /* Muted colors */
+  --muted: hsl(220, 14%, 96%);
+  --muted-foreground: hsl(215, 16%, 47%);
+
+  /* Accent colors */
+  --accent: hsl(220, 14%, 96%);
+  --accent-foreground: hsl(222, 47%, 11%);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: 221.2 83.2% 53.3%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);

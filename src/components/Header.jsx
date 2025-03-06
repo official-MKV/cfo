@@ -10,18 +10,13 @@ import {
 
 export function Header({ username, toggleSidebar }) {
   return (
-    <header className="border-b bg-white">
+    <header className=" bg-white">
       <div className="flex items-center justify-between px-4 py-3">
         <div className="flex items-center">
           <span className="text-sm font-medium">Welcome back, {username}</span>
         </div>
 
         <div className="flex items-center space-x-4">
-          <div className="flex items-center border rounded-md px-2 py-1">
-            <span className="text-sm mr-2">This month</span>
-            <Calendar className="h-4 w-4" />
-          </div>
-
           <Button variant="ghost" size="icon">
             <Bell className="h-5 w-5" />
           </Button>
