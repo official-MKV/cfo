@@ -21,7 +21,7 @@ export const Navbar = () => {
 					<Link href='/services'>Services</Link>
 					<Link href='/career'>Career</Link>
 					<Link href='/aboutus'>About us</Link>
-					<Link href='/product'>Services</Link>
+					<Link href='/product'>Product</Link>
 				</div>
 				<div>
 					<div className='flex gap-6'>
