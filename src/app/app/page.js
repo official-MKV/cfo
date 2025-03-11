@@ -1,11 +1,20 @@
+"use client";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { Newspaper } from "lucide-react";
 import ActiveProjects from "@/components/dashboard/ActiveProjects";
 import { projects } from "@/data";
+import { useRouter } from "next/navigation";
 
 const page = () => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    const url = new URL(window.location.href);
+    url.searchParams.set("createProject", "true");
+    router.push(url.pathname + url.search);
+  };
   return (
     <div className="flex flex-col w-full h-full overfl">
       <div className="w-full justify-end flex gap-2">
@@ -13,7 +22,7 @@ const page = () => {
           <Plus />
           Request a service
         </Button>
-        <Button>
+        <Button onClick={handleClick}>
           <Newspaper />
           Create a Project
         </Button>
