@@ -10,7 +10,7 @@ export const navigationItems = {
   main: [
     {
       title: "Home",
-      href: "/",
+      href: "/app",
       icon: "/icons/home_icon.svg",
       access: [
         USER_CLASSES.DEFAULT,
@@ -21,19 +21,19 @@ export const navigationItems = {
     },
     {
       title: "Experts",
-      href: "/experts",
+      href: "/app/experts",
       icon: "/icons/experts_icon.svg",
       access: [USER_CLASSES.DEFAULT, USER_CLASSES.ADMIN],
     },
     {
       title: "Projects",
-      href: "/projects",
+      href: "/app/projects",
       icon: "/icons/projects_icon.svg",
       access: [USER_CLASSES.DEFAULT, USER_CLASSES.ADMIN, USER_CLASSES.EXPERT],
     },
     {
       title: "Messages",
-      href: "/messages",
+      href: "/app/messages",
       icon: "/icons/messages_icon.svg",
       access: [
         USER_CLASSES.DEFAULT,
@@ -44,25 +44,25 @@ export const navigationItems = {
     },
     {
       title: "Reports",
-      href: "/reports",
+      href: "/app/reports",
       icon: "/icons/reports_icon.svg",
       access: [USER_CLASSES.DEFAULT, USER_CLASSES.ADMIN, USER_CLASSES.ANALYST],
     },
     {
       title: "Analytics",
-      href: "/analytics",
+      href: "/app/analytics",
       icon: "/icons/analytics_icon.svg",
       access: [USER_CLASSES.ADMIN, USER_CLASSES.ANALYST],
     },
     {
       title: "Compliance",
-      href: "/compliance",
+      href: "/app/compliance",
       icon: "/icons/compliance_icon.svg",
       access: [USER_CLASSES.ADMIN],
     },
     {
       title: "Organizations",
-      href: "/organizations",
+      href: "/app/organizations",
       icon: "/icons/organizations_icon.svg",
       access: [USER_CLASSES.ADMIN],
     },
@@ -70,7 +70,7 @@ export const navigationItems = {
   footer: [
     {
       title: "Settings",
-      href: "/settings",
+      href: "/app/settings",
       icon: "/icons/settings_icon.svg",
       access: [
         USER_CLASSES.DEFAULT,
@@ -81,7 +81,7 @@ export const navigationItems = {
     },
     {
       title: "Help",
-      href: "/help",
+      href: "/app/help",
       icon: "/icons/help_icon.svg",
       access: [
         USER_CLASSES.DEFAULT,

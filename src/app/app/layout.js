@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Sidebar } from "@/components/SideBar";
 import { Header } from "@/components/Header";
 import { Calendar } from "lucide-react";
+import CreateProjectOverlay from "@/components/dashboard/CreateProjectOverlay";
 
 export default function DashboardLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -24,11 +25,12 @@ export default function DashboardLayout({ children }) {
               <Calendar className="h-4 w-4" />
             </div>
           </div>
-          <div className="border rounded-sm h-[90%] overflow-hidden p-3">
+          <div className="border rounded-sm h-[90%] overflow-hidden p-3 overflow-y-scroll">
             {children}
           </div>
         </main>
       </div>
+      <CreateProjectOverlay />
     </div>
   );
 }

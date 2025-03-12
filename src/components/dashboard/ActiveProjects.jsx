@@ -5,7 +5,7 @@ import ProjectCard from "./ProjectCard";
 
 const ActiveProjects = ({ projects }) => {
   return (
-    <div>
+    <div className="w-full">
       <div className="flex gap-2 text-foreground mb-[20px]">
         <img src="/icons/tripledot_icon.svg" />
         <span>Active Projects</span>
@@ -24,9 +24,9 @@ const ActiveProjects = ({ projects }) => {
             </Button>
           </div>
         ) : (
-          <div>
-            {projects.map((project) => (
-              <ProjectCard project={project} id="key" />
+          <div className="flex items-center gap-5">
+            {projects.slice(0, 3).map((project) => (
+              <ProjectCard key={project.id} project={project} />
             ))}
           </div>
         )}
