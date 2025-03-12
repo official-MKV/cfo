@@ -8,8 +8,10 @@ import { X, ArrowLeft, Edit, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import ProjectCreateStepIndicator from "./ProjectCreateStepIndicator";
+import { Suspense } from "react";
+import { Loader } from "lucide-react";
 
-const CreateProjectOverlay = () => {
+const CreateProjectOverlayComp = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const isOpen = searchParams.get("createProject") === "true";
@@ -1086,5 +1088,10 @@ const CreateProjectOverlay = () => {
     </AnimatePresence>
   );
 };
+const CreateProjectOverlay = () => (
+  <Suspense fallback={<Loader />}>
+    <CreateProjectOverlayComp />
+  </Suspense>
+);
 
 export default CreateProjectOverlay;
