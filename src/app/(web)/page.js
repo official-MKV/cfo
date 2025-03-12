@@ -314,7 +314,7 @@ export default function Home() {
         <StrategiesSection />
       </div>
       <div className=" xl:p-10 mb-10">
-        <div className="p-10 flex bg-[#FAFAFA] rounded  ">
+        <div className="p-10 flex bg-[#EBF5FD] rounded  ">
           <div className="flex flex-col mr-16">
             <div className="flex flex-col max-w-[300px] space-y-2">
               <Image
@@ -408,7 +408,7 @@ export default function Home() {
 
               <div className="flex  w-full  ">
                 <CustomBlueButton>
-                  See all Services
+                  Learn more
                   <Image
                     src="/arrow_icon.svg"
                     width={30}
@@ -483,12 +483,14 @@ export default function Home() {
               width={140}
               height={150}
               className=" sm:w-30"
+              alt="small rectangle"
             />
             <Image
               src="/mid_rectangle.svg"
               width={300}
               height={150}
               className=" sm:w-65"
+              alt="small rectangle"
             />
           </div>
           <Image
@@ -496,6 +498,7 @@ export default function Home() {
             width={460}
             height={225}
             className="sm:w-100"
+            alt="small rectangle"
           />
         </div>
       </div>

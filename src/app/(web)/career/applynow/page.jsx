@@ -17,6 +17,8 @@ import {
 const ApplyNow = () => {
 	const [currentStep, setCurrentStep] = useState(1);
 	const totalSteps = 5; // Total number of steps in your form
+	const [formSubmitted, setFormSubmitted] = useState(false);
+	const [showSuccessNotification, setShowSuccessNotification] = useState(false);
 
 	const handleBack = () => {
 		if (currentStep > 1) {
@@ -34,28 +36,28 @@ const ApplyNow = () => {
 			// Form submission will redirect using Link component
 		}
 	};
-	const handlePrevious = () => {
-		if (currentStep > 1) {
-			setCurrentStep(currentStep - 1);
-		}
+	const handleSubmit = () => {
+		// Show the success notification
+		setShowSuccessNotification(true);
+		// Show the success page
+		setFormSubmitted(true);
+		
+		// You can optionally make this notification disappear after some time
+		setTimeout(() => {
+			setShowSuccessNotification(false);
+		}, 5000);
 	};
 
 	return (
 		<div className='min-h-screen  py-12'>
 			<div className='flex items-center mb-6 pl-24'>
 				{currentStep === 1 ? (
-					<Link href='/career' className='text-gray-600 mr-2 '>
-						<Image
-							src='/left_arrow.svg'
-							width={20}
-							height={25}
-							alt='arrow'
-							className='w-full'
-						/>
+					<Link href='/career' className='text-gray-600 mr-2 flex items-center'>
+						<Image src='/left_arrow.svg' width={30} height={30} alt='arrow' />
 					</Link>
 				) : (
 					<button onClick={handleBack} className='text-gray-600 mr-2'>
-						<Image src='/arrow_icon.svg' width={30} height={30} alt='arrow' />
+						<Image src='/left_arrow.svg' width={30} height={30} alt='arrow' />
 					</button>
 				)}
 				<div className='flex items-center'>
@@ -68,14 +70,14 @@ const ApplyNow = () => {
 					</span>
 				</div>
 			</div>
-			<div className='bg-white rounded-lg w-full max-w-3xl p-8 mx-auto shadow-md'>
+			<div className='bg-white rounded-lg w-full max-w-3xl p-8 mx-auto '>
 				{/* Progress bar */}
 				<div className='flex gap-1 mb-8'>
 					{Array.from({ length: totalSteps }).map((_, index) => (
 						<div
 							key={index}
 							className={`h-2 rounded flex-1 transition-all ${
-								index + 1 <= currentStep ? "bg-blue-500" : "bg-gray-200"
+								index + 1 <= currentStep ? "bg-[#2054d2]" : "bg-[#c7d4f4]"
 							}`}
 						/>
 					))}
@@ -263,7 +265,7 @@ const ApplyNow = () => {
 									height={30}
 									alt='user icon'
 								/>
-								<span className='font-medium'>Upload Documents</span>
+								<span className='font-medium'>Skill and expertise</span>
 							</div>
 						</div>
 
@@ -345,7 +347,6 @@ const ApplyNow = () => {
 									Why do you want to join our team?
 								</label>
 								<textarea
-									
 									placeholder='Explain your motivation and what you bring to the role'
 									className='w-full h-40 border hover:border-gray-300 shadow-[0px_1px_2px_0px_#E3E8EE] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 resize-none'></textarea>
 
@@ -358,7 +359,6 @@ const ApplyNow = () => {
 									Why do you want to join our team?
 								</label>
 								<textarea
-									
 									placeholder='Explain your motivation and what you bring to the role'
 									className='w-full h-40 border hover:border-gray-300 shadow-[0px_1px_2px_0px_#E3E8EE] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 resize-none'></textarea>
 
@@ -366,8 +366,8 @@ const ApplyNow = () => {
 									Maximum of 500 words
 								</span>
 							</div>
-                            
-                            <div>
+
+							<div>
 								<label className='block text-gray-600 mb-1'>Resume/CV</label>
 								<div className='border-2 border-dashed border-gray-300 rounded-lg p-6 text-center'>
 									<input
@@ -404,9 +404,6 @@ const ApplyNow = () => {
 									</label>
 								</div>
 							</div>
-							
-							
-							
 						</div>
 					</div>
 				)}
@@ -414,8 +411,8 @@ const ApplyNow = () => {
 				<div className='mt-8 flex justify-between'>
 					{currentStep > 1 && (
 						<CustomBlueButton
-							onClick={handlePrevious}
-							className='flex items-center justify-center'>
+							onClick={handleBack}
+							className='cursor-pointer gap-5'>
 							<Image
 								src='/arrow_icon.svg'
 								width={30}
@@ -426,27 +423,27 @@ const ApplyNow = () => {
 							Previous
 						</CustomBlueButton>
 					)}
-
-					{currentStep === totalSteps ? (
-						<Link href='/career'>
-							<CustomBlueButton className='flex items-center justify-center'>
-								Submit form
+					<div className={`${currentStep > 1 ? "" : "ml-auto"}`}>
+						{currentStep === totalSteps ? (
+							<Link href='/career'>
+								<CustomBlueButton className='flex items-center justify-center cursor-pointer'>
+									Submit form
+								</CustomBlueButton>
+							</Link>
+						) : (
+							<CustomBlueButton
+								onClick={handleNext}
+								className=' cursor-pointer gap-5'>
+								Next
+								<Image
+									src='/arrow_icon.svg'
+									width={30}
+									height={30}
+									alt='arrow'
+								/>
 							</CustomBlueButton>
-						</Link>
-					) : (
-						<CustomBlueButton
-							onClick={handleNext}
-							className='flex items-center justify-center'>
-							Next
-							<Image
-								src='/arrow_icon.svg'
-								width={30}
-								height={30}
-								alt='arrow'
-								className='ml-1'
-							/>
-						</CustomBlueButton>
-					)}
+						)}
+					</div>
 				</div>
 			</div>
 		</div>

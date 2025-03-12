@@ -4,7 +4,7 @@ import { Separator } from "@/components/ui/separator";
 
 const Footer = () => {
 	return (
-		<footer className='bg-[#02182A] text-white '>
+		<footer className='bg-[#2054D2] text-white '>
 			<div className='flex flex-row pt-19 px-24 xl:pr-48  flex-wrap place-content-between'>
 				<div className='max-w-[300px]'>
 					<p className='text-4xl font-normal mb-6'>CFO Advisory</p>
@@ -29,7 +29,7 @@ const Footer = () => {
 					<Link href='/career'>Career</Link>
 				</div>
 			</div>
-			<Separator />
+			 <div className="px-4"><Separator /></div>
 			<div className='flex flex-row justify-between px-24 py-8'>
 				<p>© All Right Reserved</p>
 				<p>2024 Terms and Conditions</p>

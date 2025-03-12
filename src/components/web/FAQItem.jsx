@@ -8,7 +8,7 @@ const FAQItem = ({ question, answer }) => {
 	return (
 		<div className={`
 			rounded-xl 
-			${isOpen ? 'bg-[#AFAFFF]' : 'bg-[#F2F9FF]'}
+			${isOpen ? 'bg-[#081534] text-white' : 'bg-[#F2F9FF]'}
 			transition-colors 
 			duration-300
 		`}>
@@ -26,6 +26,7 @@ const FAQItem = ({ question, answer }) => {
 					hover:bg-opacity-90 
 					transition-colors
 					px-4
+					
 				'>
 				<span>{question}</span>
 				<ChevronDown
@@ -42,7 +43,7 @@ const FAQItem = ({ question, answer }) => {
 					className='
 						px-4 
 						pb-4 
-						text-gray-600 
+						text-white 
 						transition-all 
 						duration-300 
 						ease-in-out

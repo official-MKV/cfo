@@ -5,7 +5,7 @@ import { CustomBlueButton } from "@/components/ui/CustomBlueButton";
 const AboutUS = () => {
 	return (
 		<main>
-			<div className='flex flex-col'>
+			<div className='flex flex-col mt-8'>
 				<div className='flex flex-col items-center space-y-3 mb-10'>
 					<span className='text-4xl font-semibold tracking-wide '>
 						Welcome to The CFO advisory
@@ -62,7 +62,7 @@ const AboutUS = () => {
 							through trusted, actionable financial advice.
 						</p>
 					</div>
-					<div className=' bg-amber-50'>
+					<div>
 						<Image
 							src='/Rectangle 13.svg'
 							width={500}
@@ -72,7 +72,7 @@ const AboutUS = () => {
 					</div>
 				</div>
 				<div className='flex items-center w-full xl:px-20 lg:px-10 justify-between mb-20'>
-					<div className=' bg-amber-200 ml-10 '>
+					<div className=' ml-10 '>
 						<Image
 							src='/Rectangle 13.svg'
 							width={500}
@@ -96,16 +96,18 @@ const AboutUS = () => {
 				</div>
 				<div className='flex items-center w-full xl:px-20 lg:px-10 justify-between mb-40'>
 					<div className='flex flex-col  w-1/2 py-4 gap-y-4.5 px-10'>
-						<span className=' text-2xl font-semibold'>Our Story</span>
+						<span className=' text-2xl font-semibold'>What we do</span>
 						<p className=' font-semibold '>
-							We believe every business deserves access to top-tier financial
-							expertise. Frustrated by the hurdles companies face without
-							strategic financial guidance, our founders launched [Company Name]
-							in [Year] to change the game. Starting from a modest office in
-							[City], we built an innovative web app that brings real-time
-							financial insights and direct access to seasoned CFOs. Today, we
-							empower businesses to make smarter decisions and fuel growth
-							through trusted, actionable financial advice.
+							At our CFO advisory firm, we pride ourselves on delivering
+							tailored financial strategies designed specifically to enhance
+							your business's performance. We understand that every organization
+							faces its own unique set of challenges, which is why we take the
+							time to thoroughly analyze your situation. Our team of seasoned
+							experts collaborates closely with you, providing valuable insights
+							and innovative solutions that not only address your immediate
+							needs but also set the stage for long-term success. With our
+							comprehensive approach, we aim to empower your business to thrive
+							in an ever-evolving marketplace.
 						</p>
 					</div>
 					<div className=' bg-amber-50'>
@@ -121,7 +123,9 @@ const AboutUS = () => {
 					<span className='font-bold text-4xl mb-8'>
 						Powering 31,000+ of the best customer experiences
 					</span>
-                    <CustomBlueButton className="px-20 cursor-pointer">Get started</CustomBlueButton>
+					<CustomBlueButton className='px-20 cursor-pointer'>
+						Get started
+					</CustomBlueButton>
 				</div>
 			</div>
 		</main>
