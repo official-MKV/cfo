@@ -188,7 +188,7 @@ export default function Home() {
             profitability with our tailored CFO advisory services
           </p>
           <div className="flex md:flex-wrap lg:flex-nowrap items-center3 gap-4 w-full xl:mb-2 ">
-            <CustomBlueButton>Contact us to get started today</CustomBlueButton>
+            <CustomBlueButton>Signup to get started</CustomBlueButton>
 
             <div className="flex items-center justify-center space-x-2 min-w-0 ">
               <Image

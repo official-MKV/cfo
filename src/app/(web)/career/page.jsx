@@ -110,7 +110,7 @@ const Career = () => {
 						Working at our CFO advisory firm is rewarding. We collaborate with
 						clients to create customized financial strategies that tackle their
 						challenges. Our team shares insights and supports each other,
-						contributing to our clients' <success className=''></success>
+						contributing to our clients'	
 					</p>
 				</div>
 			</div>

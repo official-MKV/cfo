@@ -1,453 +1,352 @@
 "use client";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { CustomBlueButton } from "@/components/ui/CustomBlueButton";
 import Image from "next/image";
 import Link from "next/link";
 import {
-	Select,
-	SelectContent,
-	SelectGroup,
-	SelectItem,
-	SelectLabel,
-	SelectTrigger,
-	SelectValue,
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
 } from "@/components/ui/select";
 
 const ApplyNow = () => {
-	const [currentStep, setCurrentStep] = useState(1);
-	const totalSteps = 5; // Total number of steps in your form
-	const [formSubmitted, setFormSubmitted] = useState(false);
-	const [showSuccessNotification, setShowSuccessNotification] = useState(false);
+  const [currentStep, setCurrentStep] = useState(1);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [showSuccessNotification, setShowSuccessNotification] = useState(false);
+  const totalSteps = 5;
 
-	const handleBack = () => {
-		if (currentStep > 1) {
-			setCurrentStep(currentStep - 1);
-		}
-		// For step 1, the back button will use Link component (see JSX)
-	};
+  const handleBack = () => currentStep > 1 && setCurrentStep(currentStep - 1);
+  
+  const handleNext = () => {
+    if (currentStep < totalSteps) {
+      setCurrentStep(currentStep + 1);
+    } else {
+      // Show success notification and success page
+      setShowSuccessNotification(true);
+      setFormSubmitted(true);
+      setTimeout(() => setShowSuccessNotification(false), 5000);
+    }
+  };
 
-	const handleNext = () => {
-		if (currentStep < totalSteps) {
-			setCurrentStep(currentStep + 1);
-		} else {
-			// Handle form submission
-			alert("Form submitted successfully!");
-			// Form submission will redirect using Link component
-		}
-	};
-	const handleSubmit = () => {
-		// Show the success notification
-		setShowSuccessNotification(true);
-		// Show the success page
-		setFormSubmitted(true);
-		
-		// You can optionally make this notification disappear after some time
-		setTimeout(() => {
-			setShowSuccessNotification(false);
-		}, 5000);
-	};
+  // Form step content configuration
+  const steps = [
+    {
+      icon: "/user_icon.svg",
+      title: "Personal Information",
+      content: (
+        <div className="space-y-4">
+          <FormField label="Full name" type="text" placeholder="Enter fullname" />
+          <FormField label="Email Address" type="email" placeholder="example@gmail.com" />
+          <FormField label="Phone Number" type="tel" placeholder="000-000-0000" />
+          <FormField label="LinkedIn Profile" type="url" placeholder="Enter linkedin profile link" />
+        </div>
+      )
+    },
+    {
+      icon: "/luggage_icon.svg",
+      title: "Professional Information",
+      content: (
+        <div className="space-y-4">
+          <FormField label="Current work position" type="text" placeholder="Current work position" />
+          <FormField label="Years of experience" type="number" placeholder="0" />
+          <div>
+            <label className="block text-gray-600 mb-1">Area of specialization</label>
+            <select className="w-full border hover:border-gray-300 shadow-[0px_1px_2px_0px_#E3E8EE] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300">
+              <option value="">Enter area of specialization</option>
+              <option value="accounting">Accounting</option>
+              <option value="financial-analysis">Financial Analysis</option>
+              <option value="audit">Audit</option>
+            </select>
+          </div>
+          <FormField label="Certification" type="text" placeholder="Enter certification" />
+        </div>
+      )
+    },
+    {
+      icon: "/work_icon.svg",
+      title: "Work Experience",
+      content: (
+        <div className="space-y-4">
+          <FormTextArea 
+            label="Previous Employment" 
+            placeholder="Brief summary of previous work" 
+            maxWords={250} 
+          />
+          <FormTextArea 
+            label="Key Achievements" 
+            placeholder="Enter institution name" 
+            maxWords={1000} 
+          />
+        </div>
+      )
+    },
+    {
+      icon: "/paint_icon.svg",
+      title: "Skill and expertise",
+      content: (
+        <div className="space-y-4">
+          <FormTextArea 
+            label="Describe your experience in CFO advisory" 
+            placeholder="Focus on how your background aligns with our mission" 
+          />
+          <div>
+            <span className="text-[#697386] text-sm font-semibold mb-1">
+              Financial Tools & Software Proficiency
+            </span>
+            <Select>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select a finanacial tool" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>Financial Planning & Analysis (FP&A)</SelectLabel>
+                  <SelectItem value="anaplan">Anaplan</SelectItem>
+                  <SelectItem value="cube">Cube</SelectItem>
+                  <SelectItem value="adaptive_insights">Adaptive Insights</SelectItem>
+                </SelectGroup>
+                <SelectGroup>
+                  <SelectLabel>Accounting & ERP</SelectLabel>
+                  <SelectItem value="quickbooks_online">QuickBooks Online</SelectItem>
+                  <SelectItem value="netsuite_erp">NetSuite ERP</SelectItem>
+                  <SelectItem value="sage_intacct">Sage Intacct</SelectItem>
+                </SelectGroup>
+                <SelectGroup>
+                  <SelectLabel>Forecasting & Budgeting</SelectLabel>
+                  <SelectItem value="planful">Planful</SelectItem>
+                  <SelectItem value="vena_solutions">Vena Solutions</SelectItem>
+                  <SelectItem value="jirav">Jirav</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+      )
+    },
+    {
+      icon: "/info_icon.svg",
+      title: "Additional Information",
+      content: (
+        <div className="space-y-4">
+          <FormTextArea 
+            label="Why do you want to join our team?" 
+            placeholder="Explain your motivation and what you bring to the role" 
+            maxWords={500} 
+          />
+          <FormTextArea 
+            label="Why do you want to join our team?" 
+            placeholder="Explain your motivation and what you bring to the role" 
+            maxWords={500} 
+          />
+          <FileUpload label="Resume/CV" />
+        </div>
+      )
+    }
+  ];
 
-	return (
-		<div className='min-h-screen  py-12'>
-			<div className='flex items-center mb-6 pl-24'>
-				{currentStep === 1 ? (
-					<Link href='/career' className='text-gray-600 mr-2 flex items-center'>
-						<Image src='/left_arrow.svg' width={30} height={30} alt='arrow' />
-					</Link>
-				) : (
-					<button onClick={handleBack} className='text-gray-600 mr-2'>
-						<Image src='/left_arrow.svg' width={30} height={30} alt='arrow' />
-					</button>
-				)}
-				<div className='flex items-center'>
-					<span className='text-xl text-[#575757] font-medium tracking-tight '>
-						Career
-					</span>
-					<span className='mx-2 '>|</span>
-					<span className=' text-[#121212] text-xl font-mediumtracking-tight'>
-						Apply to be a financial expert
-					</span>
-				</div>
-			</div>
-			<div className='bg-white rounded-lg w-full max-w-3xl p-8 mx-auto '>
-				{/* Progress bar */}
-				<div className='flex gap-1 mb-8'>
-					{Array.from({ length: totalSteps }).map((_, index) => (
-						<div
-							key={index}
-							className={`h-2 rounded flex-1 transition-all ${
-								index + 1 <= currentStep ? "bg-[#2054d2]" : "bg-[#c7d4f4]"
-							}`}
-						/>
-					))}
-				</div>
+  // Success page
+  if (formSubmitted) {
+    return (
+      <div className="min-h-screen py-12">
+        <div className="bg-white rounded-lg w-full max-w-3xl mx-auto">
+          {showSuccessNotification && (
+            <SuccessNotification onClose={() => setShowSuccessNotification(false)} />
+          )}
+          <div className="p-8">
+            <div className="flex flex-col items-center justify-center py-16">
+              <div className="text-center max-w-md">
+                <h2 className="text-xl font-medium mb-4">
+                  Thank you for applying as a Financial Expert.
+                </h2>
+                <p className="text-gray-600 mb-8">
+                  Your application has been successfully submitted. You will
+                  receive a confirmation email with further details shortly.
+                </p>
+                <Link href="/" className="bg-black">
+                  <button className="bg-[#2054D2] text-white px-6 py-2 rounded-md flex items-center justify-center mx-auto cursor-pointer">
+                    <span className="mr-2">Go back to home</span>
+                    <Image src="/home_icon.svg" width={20} height={20} alt="home_icon" />
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
-				{/* Form Steps */}
-				{currentStep === 1 && (
-					<div>
-						<div className='flex justify-center mb-6  '>
-							<div className='flex items-center space-x-2'>
-								<Image
-									src='/user_icon.svg'
-									width={30}
-									height={30}
-									alt='user icon'
-								/>
-								<span className='font-medium leading-tight'>
-									Personal Information
-								</span>
-							</div>
-						</div>
+  return (
+    <div className="min-h-screen py-12">
+      <div className="flex items-center mb-6 pl-24">
+        {currentStep === 1 ? (
+          <Link href="/career" className="text-gray-600 mr-2 flex items-center">
+            <Image src="/left_arrow.svg" width={30} height={30} alt="arrow" />
+          </Link>
+        ) : (
+          <button onClick={handleBack} className="text-gray-600 mr-2">
+            <Image src="/left_arrow.svg" width={30} height={30} alt="arrow" />
+          </button>
+        )}
+        <div className="flex items-center">
+          <span className="text-xl text-[#575757] font-medium tracking-tight">Career</span>
+          <span className="mx-2">|</span>
+          <span className="text-[#121212] text-xl font-medium tracking-tight">
+            Apply to be a financial expert
+          </span>
+        </div>
+      </div>
+      
+      <div className="bg-white rounded-lg w-full max-w-3xl p-8 mx-auto">
+        {/* Progress bar */}
+        <div className="flex gap-1 mb-8">
+          {Array.from({ length: totalSteps }).map((_, index) => (
+            <div
+              key={index}
+              className={`h-2 rounded flex-1 transition-all ${
+                index + 1 <= currentStep ? "bg-[#2054d2]" : "bg-[#c7d4f4]"
+              }`}
+            />
+          ))}
+        </div>
 
-						<div className='space-y-4'>
-							<div>
-								<label className='  mb-1 text-[#697386] text-sm font-semibold'>
-									Full name
-								</label>
-								<input
-									type='text'
-									placeholder='Enter fullname'
-									className='w-full border hover:border-gray-300 shadow-[0px_1px_2px_0px_#E3E8EE] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 '
-								/>
-							</div>
-							<div>
-								<label className='text-[#697386] text-sm font-semibold mb-1'>
-									Email Address
-								</label>
-								<input
-									type='email'
-									placeholder='example@gmail.com'
-									className='w-full border hover:border-gray-300 shadow-[0px_1px_2px_0px_#E3E8EE] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300'
-								/>
-							</div>
-							<div>
-								<label className='block text-gray-600 mb-1'>Phone Number</label>
-								<input
-									type='tel'
-									placeholder='000-000-0000'
-									className='w-full border hover:border-gray-300 shadow-[0px_1px_2px_0px_#E3E8EE] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300'
-								/>
-							</div>
-							<div>
-								<label className='block text-gray-600 mb-1'>
-									LinkedIn Profile
-								</label>
-								<input
-									type='url'
-									placeholder='Enter linkedin profile link'
-									className='w-full border hover:border-gray-300 shadow-[0px_1px_2px_0px_#E3E8EE] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300'
-								/>
-							</div>
-						</div>
-					</div>
-				)}
+        {/* Current step content */}
+        <div>
+          <div className="flex justify-center mb-6">
+            <div className="flex items-center space-x-2">
+              <Image
+                src={steps[currentStep-1].icon}
+                width={30}
+                height={30}
+                alt="icon"
+              />
+              <span className="font-medium leading-tight">{steps[currentStep-1].title}</span>
+            </div>
+          </div>
+          {steps[currentStep-1].content}
+        </div>
 
-				{currentStep === 2 && (
-					<div>
-						<div className='flex justify-center mb-6'>
-							<div className='flex items-center space-x-2'>
-								<Image
-									src='/luggage_icon.svg'
-									width={30}
-									height={30}
-									alt='user icon'
-								/>
-
-								<span className='font-medium leading-tight'>
-									Professional Information
-								</span>
-							</div>
-						</div>
-
-						<div className='space-y-4'>
-							<div>
-								<label className='block text-gray-600 mb-1'>
-									Current work position
-								</label>
-								<input
-									type='text'
-									placeholder='Current work position'
-									className='w-full border hover:border-gray-300 shadow-[0px_1px_2px_0px_#E3E8EE] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300'
-								/>
-							</div>
-							<div>
-								<label className='block text-gray-600 mb-1'>
-									Years of experience
-								</label>
-								<input
-									type='number'
-									placeholder='0'
-									className='w-full border hover:border-gray-300 shadow-[0px_1px_2px_0px_#E3E8EE] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300'
-								/>
-							</div>
-							<div>
-								<label className='block text-gray-600 mb-1'>
-									Area of specialization
-								</label>
-								<select className='w-full border hover:border-gray-300 shadow-[0px_1px_2px_0px_#E3E8EE] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300'>
-									<option value=''>Enter area of specialization</option>
-									<option value='accounting'>Accounting</option>
-									<option value='financial-analysis'>Financial Analysis</option>
-									<option value='audit'>Audit</option>
-								</select>
-							</div>
-							<div>
-								<label className='block text-gray-600 mb-1'>
-									Certification
-								</label>
-								<input
-									type='text'
-									placeholder='Enter certification'
-									className='w-full border hover:border-gray-300 shadow-[0px_1px_2px_0px_#E3E8EE] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300'
-								/>
-							</div>
-						</div>
-					</div>
-				)}
-
-				{currentStep === 3 && (
-					<div>
-						<div className='flex justify-center mb-6'>
-							<div className='flex items-center space-x-2'>
-								{/* Education Icon - represents educational background */}
-								<Image
-									src='/work_icon.svg'
-									width={30}
-									height={30}
-									alt='user icon'
-								/>
-								<span className='font-medium leading-tight'>
-									Work Experience
-								</span>
-							</div>
-						</div>
-
-						<div className='space-y-4'>
-							<div>
-								<label className=' mb-1 text-[#697386] text-sm font-semibold'>
-									Previous Employment
-								</label>
-								<textarea
-									type='text'
-									placeholder='Brief summary of previous work'
-									className='w-full h-40 border hover:border-gray-300 shadow-[0px_1px_2px_0px_#E3E8EE] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 resize-none '
-								/>
-								<span className='text-[#697386] text-xs font-normal'>
-									Maximum of 250 words
-								</span>
-							</div>
-							<div>
-								<label className='text-[#697386] text-sm font-semibold mb-1'>
-									Key Achievements
-								</label>
-								<textarea
-									type='text'
-									placeholder='Enter institution name'
-									className='w-full h-40 border hover:border-gray-300 shadow-[0px_1px_2px_0px_#E3E8EE] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 resize-none'
-								/>
-								<span className='text-[#697386] text-xs font-normal'>
-									Maximum of 1000 words
-								</span>
-							</div>
-						</div>
-					</div>
-				)}
-
-				{currentStep === 4 && (
-					<div>
-						<div className='flex justify-center mb-6'>
-							<div className='flex items-center space-x-2'>
-								{/* Document Icon - represents file uploads */}
-								<Image
-									src='/paint_icon.svg'
-									width={30}
-									height={30}
-									alt='user icon'
-								/>
-								<span className='font-medium'>Skill and expertise</span>
-							</div>
-						</div>
-
-						<div className='space-y-4'>
-							<div>
-								<label className='text-[#697386] text-sm font-semibold mb-1'>
-									Describe your experience in CFO advisory
-								</label>
-								<textarea
-									type='text'
-									placeholder='Focus on how your background aligns with our mission'
-									className='w-full h-40 border hover:border-gray-300 shadow-[0px_1px_2px_0px_#E3E8EE] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 resize-none'
-								/>
-							</div>
-							<div>
-								<span className='text-[#697386] text-sm font-semibold mb-1'>
-									Financial Tools & Software Proficiency
-								</span>
-								<Select>
-									<SelectTrigger className='w-full'>
-										<SelectValue placeholder='Select a finanacial tool' />
-									</SelectTrigger>
-									<SelectContent>
-										<SelectGroup>
-											<SelectLabel>
-												Financial Planning & Analysis (FP&A)
-											</SelectLabel>
-											<SelectItem value='anaplan'>Anaplan</SelectItem>
-											<SelectItem value='cube'>Cube</SelectItem>
-											<SelectItem value='adaptive_insights'>
-												Adaptive Insights
-											</SelectItem>
-										</SelectGroup>
-
-										<SelectGroup>
-											<SelectLabel>
-												Accounting & ERP (Enterprise Resource Planning)
-											</SelectLabel>
-											<SelectItem value='quickbooks_online'>
-												QuickBooks Online
-											</SelectItem>
-											<SelectItem value='netsuite_erp'>NetSuite ERP</SelectItem>
-											<SelectItem value='sage_intacct'>Sage Intacct</SelectItem>
-										</SelectGroup>
-
-										<SelectGroup>
-											<SelectLabel>Forecasting & Budgeting</SelectLabel>
-											<SelectItem value='planful'>Planful</SelectItem>
-											<SelectItem value='vena_solutions'>
-												Vena Solutions
-											</SelectItem>
-											<SelectItem value='jirav'>Jirav</SelectItem>
-										</SelectGroup>
-									</SelectContent>
-								</Select>
-							</div>
-						</div>
-					</div>
-				)}
-
-				{currentStep === 5 && (
-					<div>
-						<div className='flex justify-center mb-6'>
-							<div className='flex items-center space-x-2'>
-								{/* Clipboard Icon - represents additional information */}
-								<Image
-									src='/info_icon.svg'
-									width={30}
-									height={30}
-									alt='user icon'
-								/>
-								<span className='font-medium'>Additional Information</span>
-							</div>
-						</div>
-
-						<div className='space-y-4'>
-							<div>
-								<label className='text-[#697386] text-sm font-semibold mb-1'>
-									Why do you want to join our team?
-								</label>
-								<textarea
-									placeholder='Explain your motivation and what you bring to the role'
-									className='w-full h-40 border hover:border-gray-300 shadow-[0px_1px_2px_0px_#E3E8EE] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 resize-none'></textarea>
-
-								<span className='text-[#697386] text-xs font-normal'>
-									Maximum of 500 words
-								</span>
-							</div>
-							<div>
-								<label className='text-[#697386] text-sm font-semibold mb-1'>
-									Why do you want to join our team?
-								</label>
-								<textarea
-									placeholder='Explain your motivation and what you bring to the role'
-									className='w-full h-40 border hover:border-gray-300 shadow-[0px_1px_2px_0px_#E3E8EE] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 resize-none'></textarea>
-
-								<span className='text-[#697386] text-xs font-normal'>
-									Maximum of 500 words
-								</span>
-							</div>
-
-							<div>
-								<label className='block text-gray-600 mb-1'>Resume/CV</label>
-								<div className='border-2 border-dashed border-gray-300 rounded-lg p-6 text-center'>
-									<input
-										type='file'
-										className='hidden'
-										id='resume-upload'
-										accept='.pdf,.doc,.docx'
-									/>
-									<label htmlFor='resume-upload' className='cursor-pointer'>
-										<div className='flex flex-col items-center'>
-											{/* Upload Icon */}
-											<svg
-												xmlns='http://www.w3.org/2000/svg'
-												width='24'
-												height='24'
-												viewBox='0 0 24 24'
-												fill='none'
-												stroke='currentColor'
-												strokeWidth='2'
-												strokeLinecap='round'
-												strokeLinejoin='round'
-												className='text-blue-500 mb-2'>
-												<path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'></path>
-												<polyline points='17 8 12 3 7 8'></polyline>
-												<line x1='12' y1='3' x2='12' y2='15'></line>
-											</svg>
-											<span className='text-blue-500 font-medium'>
-												Upload Resume/CV
-											</span>
-											<span className='text-gray-500 text-sm mt-1'>
-												PDF, DOC, or DOCX (Max 5MB)
-											</span>
-										</div>
-									</label>
-								</div>
-							</div>
-						</div>
-					</div>
-				)}
-
-				<div className='mt-8 flex justify-between'>
-					{currentStep > 1 && (
-						<CustomBlueButton
-							onClick={handleBack}
-							className='cursor-pointer gap-5'>
-							<Image
-								src='/arrow_icon.svg'
-								width={30}
-								height={30}
-								alt='arrow'
-								className='mr-1 rotate-180'
-							/>
-							Previous
-						</CustomBlueButton>
-					)}
-					<div className={`${currentStep > 1 ? "" : "ml-auto"}`}>
-						{currentStep === totalSteps ? (
-							<Link href='/career'>
-								<CustomBlueButton className='flex items-center justify-center cursor-pointer'>
-									Submit form
-								</CustomBlueButton>
-							</Link>
-						) : (
-							<CustomBlueButton
-								onClick={handleNext}
-								className=' cursor-pointer gap-5'>
-								Next
-								<Image
-									src='/arrow_icon.svg'
-									width={30}
-									height={30}
-									alt='arrow'
-								/>
-							</CustomBlueButton>
-						)}
-					</div>
-				</div>
-			</div>
-		</div>
-	);
+        {/* Navigation buttons */}
+        <div className="mt-8 flex justify-between">
+          {currentStep > 1 && (
+            <CustomBlueButton onClick={handleBack} className="cursor-pointer gap-3">
+              <Image
+                src="/arrow_icon.svg"
+                width={30}
+                height={30}
+                alt="arrow"
+                className="rotate-180"
+              />
+              Previous
+            </CustomBlueButton>
+          )}
+          <div className={`${currentStep > 1 ? "" : "ml-auto"}`}>
+            <CustomBlueButton
+              onClick={handleNext}
+              className="flex items-center justify-center w-fit gap-0"
+            >
+              {currentStep === totalSteps ? "Submit form" : "Next"}
+              {currentStep !== totalSteps && (
+                <Image
+                  src="/arrow_icon.svg"
+                  width={30}
+                  height={30}
+                  alt="arrow"
+                  className="ml-3"
+                />
+              )}
+            </CustomBlueButton>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
+
+// Reusable components
+const FormField = ({ label, type, placeholder }) => (
+  <div>
+    <label className="text-[#697386] text-sm font-semibold mb-1">{label}</label>
+    <input
+      type={type}
+      placeholder={placeholder}
+      className="w-full border hover:border-gray-300 shadow-[0px_1px_2px_0px_#E3E8EE] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+    />
+  </div>
+);
+
+const FormTextArea = ({ label, placeholder, maxWords }) => (
+  <div>
+    <label className="text-[#697386] text-sm font-semibold mb-1">{label}</label>
+    <textarea
+      placeholder={placeholder}
+      className="w-full h-40 border hover:border-gray-300 shadow-[0px_1px_2px_0px_#E3E8EE] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 resize-none"
+    />
+    {maxWords && (
+      <span className="text-[#697386] text-xs font-normal">
+        Maximum of {maxWords} words
+      </span>
+    )}
+  </div>
+);
+
+const FileUpload = ({ label }) => (
+  <div>
+    <label className="block text-gray-600 mb-1">{label}</label>
+    <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+      <input
+        type="file"
+        className="hidden"
+        id="resume-upload"
+        accept=".pdf,.doc,.docx"
+      />
+      <label htmlFor="resume-upload" className="cursor-pointer">
+        <div className="flex flex-col items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="text-blue-500 mb-2"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+          </svg>
+          <span className="text-blue-500 font-medium">Upload Resume/CV</span>
+          <span className="text-gray-500 text-sm mt-1">
+            PDF, DOC, or DOCX (Max 5MB)
+          </span>
+        </div>
+      </label>
+    </div>
+  </div>
+);
+
+const SuccessNotification = ({ onClose }) => (
+  <div className="bg-[#E5FCF1] border-2 border-[#00AF12] flex items-center p-2 mx-8 mt-4 rounded ease-in-out anima">
+    <div className="bg-green-500 text-white p-1 rounded mr-4">
+      <Image src="/green_check_icon.svg" width={22} height={20} alt="green check icon" />
+    </div>
+    <span className="text-base font-medium">
+      Application submitted successfully
+    </span>
+    <button
+      className="ml-auto hover:text-gray-700 flex items-center"
+      onClick={onClose}
+    >
+      <span className="mr-2 text-base font-medium text-[#00AF12]">Close</span>
+      <Image src="/green_close_icon.svg" width={18} height={20} alt="green close icon" />
+    </button>
+  </div>
+);
 
 export default ApplyNow;
