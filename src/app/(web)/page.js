@@ -463,7 +463,7 @@ export default function Home() {
           <FAQSection />
         </div>
       </div>
-      <div className="bg-[#02182A] flex flex-row text-white flex-wrap px-25 lg:px-5 sm:px-3 place-content-between">
+      <div className="bg-[#081534] flex flex-row text-white flex-wrap px-25 lg:px-5 sm:px-3 place-content-between">
         <div className="flex flex-col py-25  xl:w-[600px] lg:w-[500px] sm:w-[340px]  ">
           <p className="text-4xl font-bold leading-snug mb-3">
             Take Control of Your Finances Today
